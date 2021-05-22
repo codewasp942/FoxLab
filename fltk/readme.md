@@ -1,5 +1,11 @@
-# Copy the fltk library into this folder
-### include
-copy headers (always in a subfolder named FL)
-> fltk-1.3.6
-> ​		|---- 
+# Copy the FLTK library into this folder
+```bash
+fltk-1.3.6
+    |---- FL    <- Copy it into fltk/include
+    |      *
+    |      *
+    |      *
+    |---- lib   <- Copy it into fltk/lib 
+    |      *
+    |      *
+```
