@@ -2,4 +2,5 @@ out/
 fltk/include/*
 fltk/lib/*
 CMakeFiles
+html
 .vs

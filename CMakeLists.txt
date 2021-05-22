@@ -25,4 +25,4 @@ link_libraries(optimized	fltkpng.lib)
 link_libraries(optimized	fltkzlib.lib)
 
 add_executable(FoxLab_demo "example/demo.cpp")
-add_library(${PROJECT_NAME} SHARED ${SRC_FILES})
+add_library(${PROJECT_NAME} SHARED ${SRC_FILES} out.def)
