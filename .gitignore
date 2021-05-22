@@ -1,0 +1,5 @@
+out/
+fltk/include/*
+fltk/lib/*
+CMakeFiles
+.vs
