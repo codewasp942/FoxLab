@@ -1,6 +1,6 @@
 #pragma once
 
-namespace FoxLab {
+namespace flab {
 
 #define DLLexpt __declspec(dllexport)
 #define DLLimpt __declspec(dllimport)
