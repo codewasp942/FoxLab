@@ -4,12 +4,18 @@
 #include <string>
 #include <vector>
 
-using std::string;
+using std::move;
+using std::ref;
 using std::forward;
 using std::vector;
+using std::string;
 
 namespace flab {
 
+/**
+ * @brief A graph wrapper class.
+ * @warning Point index starts from 0
+*/
 DLLfrm class graph {
 public:
 	/**
@@ -29,35 +35,36 @@ public:
 	 * @brief Get number of points
 	 * @return Number of points
 	*/
-	int get_num();
+	int getNumPoints();
 	/**
-	 * @brief Add an edge
+	 * @brief Add a point.
+	 * The newly added point will not connect with other points.
+	 * @warning Point index starts from 0
+	 * @return Total points after adding new points.
+	*/
+	int addPoint();
+	/**
+	 * @brief Add an edge.
 	 * @param frm From point
 	 * @param to To point
 	 * @param tag Tag of this edge
+	 * @warning Point index starts from 0
 	*/
-	void add_edge(int frm, int to, string tag);
+	void addEdge(int frm, int to, string tag);
 
 protected:
 
-	struct node {
+	struct edge {
 		int frm, to;
-		node* nxt;
+		int nxt;
 		string tag;
-
-		node() {
-			frm = to = 0;
-			nxt = nullptr;
-			tag = "";
-		}
-
-		template<typename tp_str>
-		node(int _frm, int _to, node* _nxt, tp_str&& _tag)
-			:frm(_frm), to(_to), nxt(_nxt), tag(forward(_tag)) {}
 	};
 	
 	int n;
-	vector<node*> start;
+
+	vector<edge> edges;
+	vector<int> firstEdge;
+	vector<string> pointTags;
 
 };
 
