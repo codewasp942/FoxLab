@@ -4,6 +4,11 @@
 #include <string>
 #include <vector>
 
+/**
+ * @file graph.h
+ * @brief Graph class
+ */
+
 using std::move;
 using std::ref;
 using std::forward;

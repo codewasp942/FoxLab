@@ -2,6 +2,11 @@
 #define DLLexport
 #include "dllexport.h"
 
+/**
+ * @file screen.h
+ * @brief Screen wrapper class
+ */
+
 #include <FL/Fl_Window.H>
 #include <FL/Fl.H>
 #include <FL/fl_draw.H>
