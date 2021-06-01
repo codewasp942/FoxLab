@@ -1,4 +1,6 @@
-out/
+build/
+bin/
+lib/
 fltk/include/*
 fltk/lib/*
 CMakeFiles
