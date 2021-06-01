@@ -14,7 +14,7 @@ namespace flab {
 
 /**
  * @brief A graph wrapper class.
- * @warning Point index starts from 0
+ * @note Point index starts from 0
 */
 DLLfrm class graph {
 public:
@@ -39,7 +39,7 @@ public:
 	/**
 	 * @brief Add a point.
 	 * The newly added point will not connect with other points.
-	 * @warning Point index starts from 0
+	 * @note Point index starts from 0
 	 * @return Total points after adding new points.
 	*/
 	int addPoint();
@@ -48,7 +48,7 @@ public:
 	 * @param frm From point
 	 * @param to To point
 	 * @param tag Tag of this edge
-	 * @warning Point index starts from 0
+	 * @note Point index starts from 0
 	*/
 	void addEdge(int frm, int to, string tag);
 
