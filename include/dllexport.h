@@ -1,5 +1,10 @@
 #pragma once
 
+/**
+ * @file dllexport.h
+ * @brief All about DLL export.
+ */
+
 namespace flab {
 
 #define DLLexpt __declspec(dllexport)

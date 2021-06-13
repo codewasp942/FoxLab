@@ -1,15 +1,23 @@
 #pragma once
 #define DLLexport
+#define FL_INTERNALS
 #include "dllexport.h"
+#include "widgetbase.h"
+#include <time.h>
+#include <vector>
+#include <FL/x.H>
+#include <FL/Fl.H>
+#include <FL/Fl_Window.H>
+#include <FL/Fl_Double_Window.H>
+#include <FL/fl_draw.H>
+
+using std::vector;
 
 /**
  * @file screen.h
- * @brief Screen wrapper class
+ * @brief Screen wrapper class.
  */
 
-#include <FL/Fl_Window.H>
-#include <FL/Fl.H>
-#include <FL/fl_draw.H>
 
 class mw : public Fl_Widget {
 public:
@@ -41,10 +49,53 @@ public:
 	*/
 	bool init(int wide, int height, const char* title = "FoxLab view");
 
+	/**
+	 * @brief Wait some time
+	 * @param ms Time to wait
+	*/
+	void wait(int ms);
+	/**
+	 * @brief Update window
+	*/
+	void update();
+	/**
+	 * @brief Run till the end.
+	 * @return Return value.
+	 * example:
+	 *     return scr.runTillEnd();
+	*/
+	int runTillEnd();
 
+	/**
+	 * @brief Add a widget.
+	 * The widgets added later will be displayed on the upper layer.
+	 * @param widget widget to be added , must inherit from class widgetbase
+	*/
+	void add(widgetbase* widget);
+
+	/**
+	 * @brief Set FPS.
+	 * @param newfps new FPS value
+	*/
+	void fps(double newfps);
+	/**
+	 * @brief Get FPS.
+	 * @return FPS value
+	*/
+	double fps();
+	
 private:
 
-	Fl_Window* window;
+	friend void redraw(void* args) {
+		screen* w = (screen*)args;
+		w->window->redraw();
+		Fl::add_timeout(1 / w->redrawPerSec, redraw, args);
+	}
+
+	Fl_Double_Window* window;
+	bool showed;
+
+	double redrawPerSec;
 
 };
 
