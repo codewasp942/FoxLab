@@ -12,13 +12,13 @@
  * @brief Graph class
  */
 
+namespace flab {
+
 using std::move;
 using std::ref;
 using std::forward;
 using std::vector;
 using std::string;
-
-namespace flab {
 
 /**
  * @brief A graph display wrapper class.
@@ -35,7 +35,7 @@ public:
 	 * @param _n Number of nodes
 	 * @param label label of the widget
 	*/
-	graph(int _x, int _y, int _w, int _h, int _n = 0, const char* label = 0L, double targetl = 170);
+	graph(int _x, int _y, int _w, int _h, int _n = 0, const char* label = 0L);
 
 	/**
 	 * @brief Get number of points
@@ -54,8 +54,9 @@ public:
 	 * @param frm From point
 	 * @param to To point
 	 * @param tag Tag of this edge
+	 * @param attract Attract two points
 	*/
-	void addEdge(int frm, int to, string tag = "");
+	void addEdge(int frm, int to, string tag = "", bool attract = 1);
 
 protected:
 
@@ -65,13 +66,14 @@ protected:
 		string tag;
 	};
 	
-	double targetLength;
+	double minLength;
 
 	vector<edge> edges;
 
 	vector<int> firstEdge;
 	vector<string> pointTags;
 	vector<vector2D> pointPos;
+	vector<int> repres;
 
 	vector<vector<double> > forceMat;
 
@@ -80,6 +82,11 @@ protected:
 private:
 
 	vector<vector2D> deltaPos;
+
+	// union-find disjoint sets
+	int getRepres(int a);
+	void joinPoint(int a, int b);
+	bool queryPoint(int a, int b);
 
 };
 
