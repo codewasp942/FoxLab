@@ -5,22 +5,22 @@ using namespace std;
 int main(int argc, char** argv) {
 	srand(time(NULL));
 	screen scr;
-	scr.init(500, 500, "I am your father , you are my son!");
+	scr.init(1300, 600);
 	scr.fps(1000);
-	cout << "1\n";
-	graph g(100,100,300,300);
-	cout << "2\n";
+	graph g(0, 0, 900, 600);
 	scr.add(&g);
-	cout << "3\n";
 
 	for (int i = 0; i < 10; i++) {
 		g.addPoint();
+		scr.wait(500);
 	}
-	g.addEdge(0, 1);
-	g.addEdge(0, 2);
+	g.addEdge(3, 1);
+	g.addEdge(3, 2);
+	scr.wait(500);
 	g.addEdge(5, 6);
 	g.addEdge(6, 7);
-
+	g.addEdge(3, 7);
+	scr.wait(500);
 
 	return scr.runTillEnd();
 }
