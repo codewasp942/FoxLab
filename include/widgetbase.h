@@ -3,6 +3,8 @@
 #include "dllexport.h"
 #include <FL/Fl_Widget.H>
 #include <FL/fl_draw.H>
+#include <stdexcept>
+#include <exception>
 
 /**
  * @file widgetbase.h
@@ -11,6 +13,11 @@
  */
 
 namespace flab {
+
+using std::out_of_range;
+using std::invalid_argument;
+using std::length_error;
+using std::domain_error;
 
 #define solid FL_SOLID
 #define dash FL_DASH

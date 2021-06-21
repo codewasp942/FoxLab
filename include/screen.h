@@ -9,28 +9,17 @@
 #include <FL/Fl.H>
 #include <FL/Fl_Window.H>
 #include <FL/Fl_Double_Window.H>
+#include <FL/Fl_Box.H>
 #include <FL/fl_draw.H>
-
-using std::vector;
 
 /**
  * @file screen.h
  * @brief Screen wrapper class.
  */
 
-
-class mw : public Fl_Widget {
-public:
-	mw(int x, int y, int w, int h, const char* label = 0L):Fl_Widget(x,y,w,h,label){
-		
-	}
-	void draw() {
-		fl_color(0, 0, 0);
-		fl_line(10, 10, 100, 100);
-	}
-};
-
 namespace flab {
+
+using std::vector;
 
 /**
  * @brief Screen class.
@@ -44,10 +33,33 @@ public:
 	 * @brief Create window.
 	 * @param wide Wide of the window
 	 * @param height Height of the window
+	 * @param backgruond Background color
+	 * @param title Title
 	 * @return Is init successed
 	 *   @retval If successed , return true
 	*/
-	bool init(int wide, int height, const char* title = "FoxLab view");
+	bool init(int wide, int height, const char* title = "FoxLab view", Fl_Color background = RGBcol(255, 255, 255));
+
+	/**
+	 * @brief Set FPS.
+	 * @param newfps New FPS value
+	*/
+	void fps(double newfps);
+	/**
+	 * @brief Get FPS.
+	 * @return FPS value
+	*/
+	double fps();
+	/**
+	 * @brief Set background color.
+	 * @param newcol New color
+	*/
+	void background(Fl_Color newcol);
+	/**
+	 * @brief Get backgruond color
+	 * @return Color
+	*/
+	Fl_Color background();
 
 	/**
 	 * @brief Wait some time
@@ -72,17 +84,6 @@ public:
 	 * @param widget widget to be added , must inherit from class widgetbase
 	*/
 	void add(widgetbase* widget);
-
-	/**
-	 * @brief Set FPS.
-	 * @param newfps new FPS value
-	*/
-	void fps(double newfps);
-	/**
-	 * @brief Get FPS.
-	 * @return FPS value
-	*/
-	double fps();
 	
 private:
 
@@ -93,6 +94,7 @@ private:
 	}
 
 	Fl_Double_Window* window;
+	Fl_Box* bgbox;
 	bool showed;
 
 	double redrawPerSec;
