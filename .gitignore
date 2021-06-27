@@ -1,6 +1,7 @@
 build/
 bin/
 lib/
+latex/
 fltk/include/*
 fltk/lib/*
 CMakeFiles
