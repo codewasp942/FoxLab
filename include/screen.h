@@ -87,7 +87,7 @@ public:
 	
 private:
 
-	friend void redraw(void* args) {
+	static void redraw(void* args) {
 		screen* w = (screen*)args;
 		w->window->redraw();
 		Fl::add_timeout(1 / w->redrawPerSec, redraw, args);
