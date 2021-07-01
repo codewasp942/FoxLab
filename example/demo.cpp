@@ -12,7 +12,7 @@ int main(int argc, char** argv) {
 
 	for (int i = 0; i < 10; i++) {
 		g.addPoint();
-		scr.wait(500);
+		scr.wait(100);
 	}
 	g.addEdge(3, 1);
 	g.addEdge(3, 2);
