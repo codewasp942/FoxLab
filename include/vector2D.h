@@ -21,6 +21,9 @@ public:
 	vector2D operator*(const double& b);
 	vector2D operator/(const double& b);
 
+	bool operator==(const vector2D& b);
+	bool operator!=(const vector2D& b);
+
 	double operator*(const vector2D& b);
 
 	void operator+=(const vector2D& b);

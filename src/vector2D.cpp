@@ -24,6 +24,14 @@ double vector2D::operator*(const vector2D& b) {
 	return x * b.x + y * b.y;
 }
 
+bool vector2D::operator==(const vector2D& b) {
+	return (x == b.x) && (y == b.y);
+}
+
+bool vector2D::operator!=(const vector2D& b) {
+	return (x != b.x) || (y != b.y);
+}
+
 void vector2D::operator+=(const vector2D& b) {
 	x += b.x; y += b.y;
 }
