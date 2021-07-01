@@ -1,17 +1,19 @@
 /**
- * @mainpage FoxLab arithmetic visualization library.
- * # FoxLab arithmetic visualization library
- * 
- * ***
+ * @mainpage FoxLab
+ *
+ * FoxLab is a arithmetic visualization library.
+ *
+ * It depends on the FLTK graphics library , please install FLTK on your machine.
  * 
  * ## Git repositories:
  * [github](https://github.com/codewasp942/FoxLab)
  * [gitee](https://gitee.com/codewasp942-cn/FoxLab.git)
  * > License: GPL v2
  * 
- * ***
- * 
- * ## User guide:
- * [github](https://github.com/codewasp942/FoxLab#readme)
- * [gitee](https://gitee.com/codewasp942-cn/FoxLab#foxlab)
+ * ## Tutorial:
+ * [C++](./tutorial/cpp.md)
+ *
+ * [fox++](./tutorial/foxpp.md)
+ * ## Project page:
+ * [https://codewasp942.github.io/projects/foxlab](codewasp942.github.io/projects/foxlab)
  */
