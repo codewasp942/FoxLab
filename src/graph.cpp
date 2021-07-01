@@ -71,22 +71,22 @@ void graph::update() {
 
 		for (int j = 0; j < getNumPoints(); j++) {
 			register double d = pointPos[i].dis(pointPos[j]);
-			if (queryPoint(i, j)) {
+			/*if (queryPoint(i, j)) {
 				if (d < minLength) {
 					deltaPos[i] += (pointPos[i] - pointPos[j]) * (minLength - d) / 3000;
 				}
 				else {
 					deltaPos[i] += (pointPos[i] - pointPos[j]) * (minLength - d) / 6000;
 				}
-			}
-			else {
+			}*/
+			//else {
 				if (d < minLength) {
 					deltaPos[i] += (pointPos[i] - pointPos[j]) * (minLength - d) / 5000;
 				}
 				else {
 					deltaPos[i] += (pointPos[i] - pointPos[j]) * (minLength - d) / 500000;
 				}
-			}
+			//}
 		}
 
 		for (auto e : edges) {
@@ -102,8 +102,11 @@ void graph::update() {
 				if (dis == 0) {
 					continue;
 				}
-				register vector2D vec = pointPos[i] - vm;
-				deltaPos[i] += vec.normalized() * (1 / dis);
+				register vector2D vec = (pointPos[i] - vm).normalized();
+				if (dis < 0.1) {
+					dis = 0.1;
+				}
+				deltaPos[i] += vec * (10 / dis);
 			}
 		}
 
