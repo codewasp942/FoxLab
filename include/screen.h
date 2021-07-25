@@ -84,20 +84,20 @@ public:
 	 * @param widget widget to be added , must inherit from class widgetbase
 	*/
 	void add(widgetbase* widget);
-	
-private:
 
-	static void redraw(void* args) {
-		screen* w = (screen*)args;
-		w->window->redraw();
-		Fl::add_timeout(1 / w->redrawPerSec, redraw, args);
-	}
+private:
 
 	Fl_Double_Window* window;
 	Fl_Box* bgbox;
 	bool showed;
 
 	double redrawPerSec;
+
+	friend void updateScr(void* args) {
+		screen* w = (screen*)args;
+		w->window->redraw();
+		Fl::add_timeout(1 / w->fps(), updateScr, args);
+	}
 
 };
 

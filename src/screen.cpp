@@ -2,14 +2,14 @@
 using namespace flab;
 
 screen::screen()
-	:showed(false), window(nullptr), redrawPerSec(24) {}
+	:showed(false), bgbox(nullptr), window(nullptr), redrawPerSec(24) {}
 
 bool screen::init(int wide, int height, const char* title, Fl_Color background) {
 	window = new Fl_Double_Window(wide, height, title);
 	bgbox = new Fl_Box(0, 0, wide, height);
 	bgbox->color(background);
 	bgbox->box(FL_FLAT_BOX);
-	Fl::add_timeout(1 / redrawPerSec, redraw, this);
+	Fl::add_timeout(1 / redrawPerSec, updateScr, this);
 	window->end();
 	window->show();
 	return true;
