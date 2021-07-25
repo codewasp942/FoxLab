@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <algorithm>
 
 /**
  * @file graph.h
@@ -19,6 +20,8 @@ using std::ref;
 using std::forward;
 using std::vector;
 using std::string;
+using std::max;
+using std::min;
 
 /**
  * @brief A graph display wrapper class.
@@ -75,13 +78,12 @@ protected:
 	vector<vector2D> pointPos;
 	vector<int> repres;
 
-	vector<vector<double> > forceMat;
-
 	void update();
 
 private:
 
-	vector<vector2D> deltaPos;
+	vector<vector2D> force;
+	vector<vector2D> tempSpeed;
 
 	// union-find disjoint sets
 	int getRepres(int a);
